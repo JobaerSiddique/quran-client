@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Providers } from "@/lib/Provider";
+import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
+import { SettingsProvider } from "@/contexts/SettingsContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +32,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col p-4 m-4">
+        <Providers>
+          <SettingsProvider>{children}</SettingsProvider>
+        </Providers>
+      </body>
     </html>
   );
 }
