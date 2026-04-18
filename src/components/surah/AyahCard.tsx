@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { IAyah } from "@/types";
 
@@ -66,6 +67,59 @@ export default function AyahCard({ ayah, index }: AyahCardProps) {
     </motion.div>
   );
 }
+
+// "use client";
+// import { motion } from "framer-motion";
+// import { IAyah } from "@/types";
+// import { useSettings } from "@/contexts/SettingsContext";
+
+// interface AyahCardProps {
+//   ayah: IAyah;
+//   index: number;
+// }
+
+// export default function AyahCard({ ayah, index }: AyahCardProps) {
+//   const { settings } = useSettings();
+
+//   const fontFamily =
+//     settings.arabicFont === "amiri" ? "font-arabic" : "font-arabic-lateef";
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 20 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       transition={{ delay: index * 0.025 }}
+//       whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
+//       className="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300"
+//     >
+//       <div className="card-body p-6">
+//         <div className="flex justify-between items-center mb-5">
+//           <div className="flex items-center gap-2">
+//             <div className="badge badge-primary badge-sm font-medium">
+//               {ayah.ayahNumber}
+//             </div>
+//             {ayah.sajda && (
+//               <div className="badge badge-secondary badge-sm">Sajda</div>
+//             )}
+//           </div>
+//         </div>
+
+//         <div
+//           className={`text-right leading-relaxed mb-6 ${fontFamily}`}
+//           style={{ fontSize: `${settings.arabicFontSize}rem` }}
+//         >
+//           {ayah.textArabic}
+//         </div>
+
+//         <div className="flex justify-between text-xs text-base-content/50 mt-4 pt-4 border-t">
+//           <span>Juz {ayah.juz}</span>
+//           <span>Page {ayah.page}</span>
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// }
+
 // "use client";
 
 // import { useSettings } from "@/contexts/SettingsContext";

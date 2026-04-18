@@ -1,12 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 
   typescript: {
     // ⚠️ Ignore TypeScript errors during build
     ignoreBuildErrors: true,
+  },
+  transpilePackages: ["framer-motion"],
+  compiler: {
+    styledComponents: true,
   },
 };
 

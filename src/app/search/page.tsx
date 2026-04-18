@@ -292,6 +292,9 @@ import { Suspense } from "react";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import SearchContent from "./SearchContent";
 
+// Force dynamic rendering to prevent Framer Motion server errors
+export const dynamic = "force-dynamic";
+
 export default function SearchPage() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
