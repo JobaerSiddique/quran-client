@@ -33,9 +33,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col p-4 m-4">
-        <Providers>
-          <SettingsProvider>{children}</SettingsProvider>
-        </Providers>
+        <SettingsProvider>
+          <Providers>{children}</Providers>
+        </SettingsProvider>
       </body>
     </html>
   );
