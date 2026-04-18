@@ -44,3 +44,27 @@ export default function SurahCard({ surah, index }: SurahCardProps) {
     </Link>
   );
 }
+// "use client";
+
+// import { useSettings } from "@/contexts/SettingsContext";
+
+// export default function SurahCard({ surah }: any) {
+//   const { settings } = useSettings();
+
+//   return (
+//     <div className="card p-4">
+//       <div className="text-right">
+//         <div
+//           className="arabic-text"
+//           style={{ fontSize: `${settings.arabicFontSize}rem` }}
+//         >
+//           {surah.nameArabic}
+//         </div>
+
+//         <div style={{ fontSize: `${settings.translationFontSize}rem` }}>
+//           {surah.nameEnglish}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

@@ -2,13 +2,13 @@
 
 import { useParams, useRouter } from "next/navigation";
 
-import { useSettings } from "@/hooks/useSettings";
 import AyahCard from "@/components/surah/AyahCard";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import { motion } from "framer-motion";
 import { ChevronLeft, Play, Info } from "lucide-react";
 import { useGetSurahById } from "@/hooks/quran.hooks";
+import { useSettings } from "@/contexts/SettingsContext";
 
 export default function SurahPage() {
   const { id } = useParams();

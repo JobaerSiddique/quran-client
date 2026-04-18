@@ -163,6 +163,121 @@
 //     </AnimatePresence>
 //   );
 // }
+// "use client";
+
+// import { motion, AnimatePresence } from "framer-motion";
+// import { X, RotateCcw } from "lucide-react";
+// import { useSettings } from "@/contexts/SettingsContext";
+// import { ARABIC_FONTS } from "@/utils/constants";
+
+// export default function SettingsSidebar() {
+//   const {
+//     settings,
+//     updateSettings,
+//     resetSettings,
+//     isSettingsOpen,
+//     setIsSettingsOpen,
+//   } = useSettings();
+
+//   return (
+//     <AnimatePresence>
+//       {isSettingsOpen && (
+//         <>
+//           {/* Overlay */}
+//           <motion.div
+//             className="fixed inset-0 bg-black/40 z-40"
+//             onClick={() => setIsSettingsOpen(false)}
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//           />
+
+//           {/* Sidebar */}
+//           <motion.div
+//             className="fixed right-0 top-0 h-full w-80 bg-base-100 shadow-xl z-50 p-5 overflow-y-auto"
+//             initial={{ x: "100%" }}
+//             animate={{ x: 0 }}
+//             exit={{ x: "100%" }}
+//           >
+//             {/* Header */}
+//             <div className="flex justify-between items-center mb-6">
+//               <h2 className="text-xl font-semibold">Settings</h2>
+//               <button onClick={() => setIsSettingsOpen(false)}>
+//                 <X size={20} />
+//               </button>
+//             </div>
+
+//             {/* Arabic Font */}
+//             <div className="mb-6">
+//               <h3 className="font-medium mb-2">Arabic Font</h3>
+//               <select
+//                 className="select select-bordered w-full"
+//                 value={settings.arabicFont}
+//                 onChange={(e) => updateSettings({ arabicFont: e.target.value })}
+//               >
+//                 {ARABIC_FONTS.map((font) => (
+//                   <option key={font.id} value={font.id}>
+//                     {font.name}
+//                   </option>
+//                 ))}
+//               </select>
+//             </div>
+
+//             {/* Arabic Font Size */}
+//             <div className="mb-6">
+//               <h3 className="font-medium mb-2">
+//                 Arabic Size: {settings.arabicFontSize}rem
+//               </h3>
+//               <input
+//                 type="range"
+//                 min="1"
+//                 max="2.5"
+//                 step="0.1"
+//                 value={settings.arabicFontSize}
+//                 onChange={(e) =>
+//                   updateSettings({
+//                     arabicFontSize: parseFloat(e.target.value),
+//                   })
+//                 }
+//                 className="range"
+//               />
+//             </div>
+
+//             {/* Translation Font Size */}
+//             <div className="mb-6">
+//               <h3 className="font-medium mb-2">
+//                 Translation Size: {settings.translationFontSize}rem
+//               </h3>
+//               <input
+//                 type="range"
+//                 min="0.7"
+//                 max="1.5"
+//                 step="0.1"
+//                 value={settings.translationFontSize}
+//                 onChange={(e) =>
+//                   updateSettings({
+//                     translationFontSize: parseFloat(e.target.value),
+//                   })
+//                 }
+//                 className="range"
+//               />
+//             </div>
+
+//             {/* Reset */}
+//             <button
+//               onClick={resetSettings}
+//               className="btn btn-outline w-full flex items-center gap-2"
+//             >
+//               <RotateCcw size={16} />
+//               Reset Settings
+//             </button>
+//           </motion.div>
+//         </>
+//       )}
+//     </AnimatePresence>
+//   );
+// }
+
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -183,7 +298,7 @@ export default function SettingsSidebar() {
     <AnimatePresence>
       {isSettingsOpen && (
         <>
-          {/* Overlay */}
+          {/* overlay */}
           <motion.div
             className="fixed inset-0 bg-black/40 z-40"
             onClick={() => setIsSettingsOpen(false)}
@@ -192,42 +307,40 @@ export default function SettingsSidebar() {
             exit={{ opacity: 0 }}
           />
 
-          {/* Sidebar */}
+          {/* sidebar */}
           <motion.div
-            className="fixed right-0 top-0 h-full w-80 bg-base-100 shadow-xl z-50 p-5 overflow-y-auto"
+            className="fixed right-0 top-0 h-full w-80 bg-base-100 z-50 p-5 overflow-y-auto"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
           >
-            {/* Header */}
-            <div className="flex justify-between items-center mb-6">
+            {/* header */}
+            <div className="flex justify-between mb-6">
               <h2 className="text-xl font-semibold">Settings</h2>
               <button onClick={() => setIsSettingsOpen(false)}>
-                <X size={20} />
+                <X />
               </button>
             </div>
 
             {/* Arabic Font */}
             <div className="mb-6">
-              <h3 className="font-medium mb-2">Arabic Font</h3>
+              <h3 className="mb-2">Arabic Font</h3>
               <select
                 className="select select-bordered w-full"
                 value={settings.arabicFont}
                 onChange={(e) => updateSettings({ arabicFont: e.target.value })}
               >
-                {ARABIC_FONTS.map((font) => (
-                  <option key={font.id} value={font.id}>
-                    {font.name}
+                {ARABIC_FONTS.map((f) => (
+                  <option key={f.id} value={f.id}>
+                    {f.name}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Arabic Font Size */}
+            {/* Arabic Size */}
             <div className="mb-6">
-              <h3 className="font-medium mb-2">
-                Arabic Size: {settings.arabicFontSize}rem
-              </h3>
+              <h3>Arabic Size: {settings.arabicFontSize}rem</h3>
               <input
                 type="range"
                 min="1"
@@ -243,33 +356,33 @@ export default function SettingsSidebar() {
               />
             </div>
 
-            {/* Translation Font Size */}
+            {/* Translation Size */}
             <div className="mb-6">
-              <h3 className="font-medium mb-2">
-                Translation Size: {settings.translationFontSize}rem
-              </h3>
+              <h3>Translation Size: {settings.translationFontSize}rem</h3>
               <input
                 type="range"
                 min="0.7"
                 max="1.5"
                 step="0.1"
                 value={settings.translationFontSize}
-                onChange={(e) =>
+                onChange={(e) => {
+                  const newSize = parseFloat(e.target.value);
+                  console.log("Setting translation size to:", newSize); // Debug log
                   updateSettings({
-                    translationFontSize: parseFloat(e.target.value),
-                  })
-                }
+                    translationFontSize: newSize,
+                  });
+                }}
                 className="range"
               />
             </div>
 
-            {/* Reset */}
+            {/* reset */}
             <button
               onClick={resetSettings}
-              className="btn btn-outline w-full flex items-center gap-2"
+              className="btn btn-outline w-full flex gap-2"
             >
               <RotateCcw size={16} />
-              Reset Settings
+              Reset
             </button>
           </motion.div>
         </>

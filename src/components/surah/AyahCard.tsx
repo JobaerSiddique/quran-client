@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { IAyah } from "@/types";
-import { useSettings } from "@/hooks/useSettings";
 
 import { Play, Pause, Bookmark, Share2, Volume2 } from "lucide-react";
 import { useState } from "react";
+import { useSettings } from "@/contexts/SettingsContext";
 
 interface AyahCardProps {
   ayah: IAyah;
@@ -66,3 +66,34 @@ export default function AyahCard({ ayah, index }: AyahCardProps) {
     </motion.div>
   );
 }
+// "use client";
+
+// import { useSettings } from "@/contexts/SettingsContext";
+
+// export default function AyahCard({ ayah }: any) {
+//   const { settings } = useSettings();
+
+//   return (
+//     <div className="card p-4">
+//       {/* Arabic */}
+//       <div
+//         className="text-right mb-4"
+//         style={{
+//           fontSize: `${settings.arabicFontSize}rem`,
+//         }}
+//       >
+//         {ayah.textArabic}
+//       </div>
+
+//       {/* Translation */}
+//       <div
+//         className="text-left text-gray-600"
+//         style={{
+//           fontSize: `${settings.translationFontSize}rem`,
+//         }}
+//       >
+//         {ayah.textEnglish}
+//       </div>
+//     </div>
+//   );
+// }
